@@ -12,10 +12,13 @@ class SiteSetting extends Model
     /**
      * Ambil nilai setting berdasarkan key, dengan default jika tidak ada.
      */
-    public static function get(string $key, string $default = ''): string
+    public static function get(string $key, ?string $default = ''): ?string
     {
         $setting = static::where('key', $key)->first();
-        return $setting ? $setting->value : $default;
+        if ($setting && !is_null($setting->value)) {
+            return $setting->value;
+        }
+        return $default ?? '';
     }
 
     /**
