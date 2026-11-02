@@ -27,6 +27,9 @@ class AuthController extends Controller
         }else if (Auth::guard('pimpinan')->attempt(['email'=>$data['email'],'password'=>$data['password'],'role'=>'pimpinan'])){
             $request->session()->regenerate();
             return redirect()->intended('/pimpinan/home');
+        }else if (Auth::guard('pelanggan')->attempt(['email'=>$data['email'],'password'=>$data['password'],'role'=>'pelanggan'])){
+            $request->session()->regenerate();
+            return redirect()->intended('/pelanggan/dashboard');
         }else{
             return redirect(route('login'))->with('error','email dan password salah');
         }
@@ -40,6 +43,8 @@ class AuthController extends Controller
             Auth::guard('kasir')->logout();
         }else if(Auth::guard('pimpinan')->check()){
             Auth::guard('pimpinan')->logout();
+        }else if(Auth::guard('pelanggan')->check()){
+            Auth::guard('pelanggan')->logout();
         }
         return redirect(route('login'));
     }

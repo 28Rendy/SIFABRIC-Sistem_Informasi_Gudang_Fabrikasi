@@ -73,3 +73,4 @@ class GaleriAdminController extends Controller
         return redirect()->route('admin.galeri.index')->with('success', 'Foto galeri berhasil dihapus!');
     }
 }
+

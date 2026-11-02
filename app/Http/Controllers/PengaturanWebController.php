@@ -69,3 +69,4 @@ class PengaturanWebController extends Controller
         return redirect()->back()->with('success', 'Pengaturan website berhasil diperbarui!');
     }
 }
+

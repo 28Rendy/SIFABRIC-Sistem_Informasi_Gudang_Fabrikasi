@@ -33,12 +33,15 @@
                         @if($item->harga_jual)
                             <div class="harga">Rp {{ number_format($item->harga_jual, 0, ',', '.') }}</div>
                         @endif
-                        <div class="d-flex justify-content-between align-items-center mt-2">
+                        <div class="d-flex justify-content-between align-items-center mt-2 mb-3">
                             <small class="text-muted">Satuan: {{ $item->satuan }}</small>
                             <span class="badge {{ $item->stok > 10 ? 'bg-success' : 'bg-warning text-dark' }} stok-badge">
                                 Stok: {{ $item->stok }}
                             </span>
                         </div>
+                        <a href="{{ route('pelanggan.order', $item->id) }}" class="btn btn-outline-primary btn-sm w-100 rounded-pill">
+                            <i class="fa fa-shopping-cart me-1"></i> Pesan Barang Ini
+                        </a>
                     </div>
                 </div>
             </div>

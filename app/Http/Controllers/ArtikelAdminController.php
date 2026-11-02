@@ -93,3 +93,4 @@ class ArtikelAdminController extends Controller
         return redirect()->route('admin.artikel.index')->with('success', 'Artikel berhasil dihapus!');
     }
 }
+

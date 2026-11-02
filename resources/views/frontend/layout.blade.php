@@ -67,9 +67,20 @@
                 <li class="nav-item"><a class="nav-link {{ request()->is('tentang-kami*') ? 'active' : '' }}" href="{{ url('/tentang-kami') }}">Tentang Kami</a></li>
                 <li class="nav-item"><a class="nav-link {{ request()->is('kontak*') ? 'active' : '' }}" href="{{ url('/kontak') }}">Kontak</a></li>
             </ul>
-            <a href="{{ route('login') }}" class="btn btn-login ms-2">
-                <i class="fa fa-sign-in-alt me-1"></i> Login Admin
-            </a>
+            <div class="d-flex align-items-center gap-2 ms-lg-2">
+                @if(Auth::guard('pelanggan')->check())
+                    <a href="{{ route('pelanggan.dashboard') }}" class="btn btn-outline-primary btn-sm rounded-pill px-3">
+                        <i class="fa fa-user me-1"></i> Area Pelanggan
+                    </a>
+                @else
+                    <a href="{{ route('pelanggan.register') }}" class="btn btn-outline-primary btn-sm rounded-pill px-3">
+                        <i class="fa fa-user-plus me-1"></i> Daftar
+                    </a>
+                    <a href="{{ route('login') }}" class="btn btn-login btn-sm">
+                        <i class="fa fa-sign-in-alt me-1"></i> Masuk
+                    </a>
+                @endif
+            </div>
         </div>
     </div>
 </nav>

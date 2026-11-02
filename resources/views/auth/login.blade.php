@@ -123,6 +123,13 @@
                 </div>
 
                 <button type="submit" class="btn btn-custom w-100">Masuk</button>
+
+                <div class="text-center mt-3 pt-3 border-top">
+                    <p class="small text-muted mb-1">Pelanggan baru dan ingin memesan barang?</p>
+                    <a href="{{ route('pelanggan.register') }}" class="small text-primary fw-bold text-decoration-none">
+                        Daftar Akun Pelanggan
+                    </a>
+                </div>
             </form>
         </div>
     </div>

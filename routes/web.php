@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminPesananController;
 use App\Http\Controllers\ArtikelAdminController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BarangController;
@@ -19,6 +20,8 @@ use App\Http\Controllers\LaporanBarangMasukController;
 use App\Http\Controllers\LaporanController;
 use App\Http\Controllers\LaporanPenjualanController;
 use App\Http\Controllers\LapPenjualanAdminController;
+use App\Http\Controllers\PelangganAuthController;
+use App\Http\Controllers\PelangganPortalController;
 use App\Http\Controllers\PengaturanWebController;
 use App\Http\Controllers\PengeluaranController;
 use App\Http\Controllers\PenjualanController;
@@ -45,6 +48,21 @@ Route::get('/kontak', [FrontendController::class, 'kontak'])->name('frontend.kon
 // =============================================
 Route::get('/login', [AuthController::class, 'index'])->name('login')->middleware('guest');
 Route::post('/login', [AuthController::class, 'verify'])->name('auth.verify');
+
+// Registrasi Pelanggan Baru
+Route::get('/register-pelanggan', [PelangganAuthController::class, 'showRegister'])->name('pelanggan.register')->middleware('guest');
+Route::post('/register-pelanggan', [PelangganAuthController::class, 'register'])->name('pelanggan.register.submit')->middleware('guest');
+
+// =============================================
+// PORTAL PELANGGAN (auth:pelanggan)
+// =============================================
+Route::group(['middleware' => ['auth:pelanggan']], function () {
+    Route::get('/pelanggan/dashboard', [PelangganPortalController::class, 'dashboard'])->name('pelanggan.dashboard');
+    Route::get('/pelanggan/pesan/{barang_id?}', [PelangganPortalController::class, 'formOrder'])->name('pelanggan.order');
+    Route::post('/pelanggan/pesan', [PelangganPortalController::class, 'submitOrder'])->name('pelanggan.order.submit');
+    Route::get('/pelanggan/riwayat', [PelangganPortalController::class, 'riwayatPesanan'])->name('pelanggan.riwayat');
+    Route::get('/pelanggan/pesanan/{id}', [PelangganPortalController::class, 'detailPesanan'])->name('pelanggan.pesanan.detail');
+});
 
 Route::group(['middleware' => ['auth:admin,kasir,pimpinan']], function () {
     Route::get('/profile', [ProfilController::class, 'show'])->name('profile');
@@ -114,6 +132,11 @@ Route::group(['middleware' => 'auth:admin'], function () {
     Route::get('/laporan-penjualan-admin', [LapPenjualanAdminController::class, 'index'])->name('laporan.penjualan.admin');
     Route::get('/laporan-penjualan-admin/pdf', [LapPenjualanAdminController::class, 'exportPdf'])->name('laporan.penjualan.admin.pdf');
     Route::get('/laporan-penjualan-admin/excel', [LapPenjualanAdminController::class, 'exportExcel'])->name('laporan.penjualan.admin.excel');
+
+    // Kelola Pesanan Masuk (Admin)
+    Route::get('/admin/pesanan', [AdminPesananController::class, 'index'])->name('admin.pesanan.index');
+    Route::get('/admin/pesanan/{id}', [AdminPesananController::class, 'show'])->name('admin.pesanan.show');
+    Route::post('/admin/pesanan/{id}/status', [AdminPesananController::class, 'updateStatus'])->name('admin.pesanan.updateStatus');
 
     // Pengaturan Web & Frontend Konten (Admin)
     Route::get('/admin/pengaturan-web', [PengaturanWebController::class, 'index'])->name('admin.pengaturan.index');

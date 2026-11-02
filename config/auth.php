@@ -54,6 +54,10 @@ return [
             'driver' => 'session',
             'provider' => 'pimpinan',
         ],
+        'pelanggan' => [
+            'driver' => 'session',
+            'provider' => 'pelanggan',
+        ],
     ],
 
     /*
@@ -87,6 +91,10 @@ return [
             'model' => App\Models\User::class,
         ],
         'pimpinan' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\User::class,
+        ],
+        'pelanggan' => [
             'driver' => 'eloquent',
             'model' => App\Models\User::class,
         ],

@@ -148,6 +148,12 @@
             <p>Riwayat Penjualan</p>
             </a>
           </li>
+          <li class="nav-item {{ request()->routeIs('admin.pesanan.*') ? 'active' : '' }}">
+            <a href="{{ route('admin.pesanan.index') }}">
+            <i class="fas fa-shopping-bag"></i>
+            <p>Pesanan Masuk Web</p>
+            </a>
+          </li>
           <!-- <li class="nav-item {{ request()->routeIs('admin.pengeluaran.*') ? 'active' : '' }}">
           <a href="{{ route('admin.pengeluaran.index') }}">
           <i class="fas fa-money-bill-wave"></i>
