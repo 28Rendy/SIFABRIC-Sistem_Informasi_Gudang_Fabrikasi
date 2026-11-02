@@ -70,9 +70,10 @@ Route::group(['middleware' => ['auth:admin,kasir,pimpinan']], function () {
     Route::post('/profile/update', [ProfilController::class, 'update'])->name('profile.update');
     Route::get('/password/change', [ProfilController::class, 'changePassword'])->name('password.change');
     Route::post('/password/update', [ProfilController::class, 'updatePassword'])->name('password.update');
-
-    Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 });
+
+// Logout berlaku untuk semua guard (admin, kasir, pimpinan, pelanggan)
+Route::match(['get', 'post'], '/logout', [AuthController::class, 'logout'])->name('logout');
 
 Route::group(['middleware' => 'auth:admin'], function () {
     Route::get('/admin/home', [DashboardAdminController::class, 'index'])->name('admin.dashboard.index');

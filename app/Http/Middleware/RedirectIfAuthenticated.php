@@ -24,6 +24,8 @@ class RedirectIfAuthenticated extends RedirectIfAuthenticatedMiddleware
             return  redirect(route('kasir.dashboard.index'));
         }else if(Auth::guard('pimpinan')->check()){
             return  redirect(route('pimpinan.dashboard.index'));
+        }else if(Auth::guard('pelanggan')->check()){
+            return  redirect(route('pelanggan.dashboard'));
         }
         return $next($request);
     }

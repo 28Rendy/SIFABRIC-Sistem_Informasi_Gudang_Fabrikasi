@@ -18,34 +18,40 @@ class AuthController extends Controller
     {
         $data = $request->validated();
 
+        // Bersihkan session intended dan guard lama agar tidak konflik antar-role
+        $request->session()->forget('url.intended');
+        Auth::guard('admin')->logout();
+        Auth::guard('kasir')->logout();
+        Auth::guard('pimpinan')->logout();
+        Auth::guard('pelanggan')->logout();
+
         if(Auth::guard('admin')->attempt(['email'=>$data['email'],'password'=>$data['password'],'role'=>'admin'])){
             $request->session()->regenerate();
-            return redirect()->intended('/admin/home');
+            return redirect('/admin/home');
         }else if (Auth::guard('kasir')->attempt(['email'=>$data['email'],'password'=>$data['password'],'role'=>'kasir'])){
             $request->session()->regenerate();
-            return redirect()->intended('/kasir/home');
+            return redirect('/kasir/home');
         }else if (Auth::guard('pimpinan')->attempt(['email'=>$data['email'],'password'=>$data['password'],'role'=>'pimpinan'])){
             $request->session()->regenerate();
-            return redirect()->intended('/pimpinan/home');
+            return redirect('/pimpinan/home');
         }else if (Auth::guard('pelanggan')->attempt(['email'=>$data['email'],'password'=>$data['password'],'role'=>'pelanggan'])){
             $request->session()->regenerate();
-            return redirect()->intended('/pelanggan/dashboard');
+            return redirect('/pelanggan/dashboard');
         }else{
             return redirect(route('login'))->with('error','email dan password salah');
         }
     }
 
-    public function logout():RedirectResponse
+    public function logout(Request $request): RedirectResponse
     {
-        if(Auth::guard('admin')->check()){
-            Auth::guard('admin')->logout();
-        }else if(Auth::guard('kasir')->check()){
-            Auth::guard('kasir')->logout();
-        }else if(Auth::guard('pimpinan')->check()){
-            Auth::guard('pimpinan')->logout();
-        }else if(Auth::guard('pelanggan')->check()){
-            Auth::guard('pelanggan')->logout();
-        }
+        Auth::guard('admin')->logout();
+        Auth::guard('kasir')->logout();
+        Auth::guard('pimpinan')->logout();
+        Auth::guard('pelanggan')->logout();
+
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
         return redirect(route('login'));
     }
 }
