@@ -179,3 +179,4 @@ class ContentDummySeeder extends Seeder
         }
     }
 }
+

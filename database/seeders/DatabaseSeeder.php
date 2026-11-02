@@ -39,6 +39,7 @@ class DatabaseSeeder extends Seeder
             BarangSeeder::class,
             SiteSettingSeeder::class,
             ContentDummySeeder::class,
+            TransaksiDummySeeder::class,
         ]);
     }
 }
