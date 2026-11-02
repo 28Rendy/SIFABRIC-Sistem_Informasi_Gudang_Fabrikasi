@@ -46,12 +46,12 @@
 <body>
   <div class="wrapper">
     <!-- Sidebar -->
-    <div class="sidebar" data-background-color="dark">
+    <div class="sidebar" data-background-color="white">
       <div class="sidebar-logo">
         <!-- Logo Header -->
-        <div class="logo-header" data-background-color="dark">
-          <a href="index.html" class="logo text-decoration-none d-flex align-items-center gap-2">
-            <h4 class="toko m-0 text-white fw-bold">Sifabrik</h4>
+        <div class="logo-header" data-background-color="white">
+          <a href="{{ route('admin.dashboard.index') }}" class="logo text-decoration-none d-flex align-items-center gap-2">
+            <h4 class="toko m-0 text-primary fw-bold">🏭 Sifabrik</h4>
           </a>
           <div class="nav-toggle">
             <button class="btn btn-toggle toggle-sidebar">
@@ -263,10 +263,9 @@
       <div class="main-header">
         <div class="main-header-logo">
           <!-- Logo Header -->
-          <div class="logo-header" data-background-color="dark">
-            <a href="index.html" class="logo">
-              <img src="{{ asset('dist/assets/img/kaiadmin/logo_light.svg') }}" alt="navbar brand" class="navbar-brand"
-                height="20" />
+          <div class="logo-header" data-background-color="white">
+            <a href="{{ route('admin.dashboard.index') }}" class="logo text-decoration-none d-flex align-items-center gap-2">
+              <h4 class="toko m-0 text-primary fw-bold">🏭 Sifabrik</h4>
             </a>
             <div class="nav-toggle">
               <button class="btn btn-toggle toggle-sidebar">
