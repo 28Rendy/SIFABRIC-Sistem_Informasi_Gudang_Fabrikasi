@@ -1,8 +1,4 @@
-<p align="center">
-  <img src="public/IMG/ptm_company_logo.png" width="200" alt="SIFABRIC Logo">
-</p>
-
-<h1 align="center">SIFABRIC</h1>
+<h1 align="center">🏭 SIFABRIC</h1>
 <p align="center"><strong>Sistem Informasi Gudang Fabrikasi</strong></p>
 
 <p align="center">
