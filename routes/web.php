@@ -64,7 +64,7 @@ Route::group(['middleware' => ['auth:pelanggan']], function () {
     Route::get('/pelanggan/pesanan/{id}', [PelangganPortalController::class, 'detailPesanan'])->name('pelanggan.pesanan.detail');
 });
 
-Route::group(['middleware' => ['auth:admin,kasir,pimpinan']], function () {
+Route::group(['middleware' => ['auth:admin,kasir,pimpinan,pelanggan']], function () {
     Route::get('/profile', [ProfilController::class, 'show'])->name('profile');
     Route::get('/profile/edit', [ProfilController::class, 'edit'])->name('profile.edit');
     Route::post('/profile/update', [ProfilController::class, 'update'])->name('profile.update');

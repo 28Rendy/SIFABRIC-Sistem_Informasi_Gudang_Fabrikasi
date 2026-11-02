@@ -78,6 +78,13 @@
     .h-5 { height: 1.25rem !important; }
     .w-4 { width: 1rem !important; }
     .h-4 { height: 1rem !important; }
+
+    /* Badges status pesanan */
+    .badge-menunggu { background: #fef3c7 !important; color: #92400e !important; }
+    .badge-diproses { background: #dbeafe !important; color: #1e40af !important; }
+    .badge-dikirim  { background: #e0e7ff !important; color: #3730a3 !important; }
+    .badge-selesai  { background: #dcfce7 !important; color: #166534 !important; }
+    .badge-dibatalkan { background: #fee2e2 !important; color: #991b1b !important; }
   </style>
 
 </head>
@@ -90,10 +97,20 @@
         <!-- Logo Header -->
         <div class="logo-header" data-background-color="white">
           @php
+            $currentRole = Auth::user()->role ?? 'admin';
+            if ($currentRole === 'pelanggan') {
+                $dashboardRoute = route('pelanggan.dashboard');
+            } elseif ($currentRole === 'kasir') {
+                $dashboardRoute = route('kasir.dashboard.index');
+            } elseif ($currentRole === 'pimpinan') {
+                $dashboardRoute = route('pimpinan.dashboard.index');
+            } else {
+                $dashboardRoute = route('admin.dashboard.index');
+            }
             $backendLogo = \App\Models\SiteSetting::get('logo');
             $backendNama = \App\Models\SiteSetting::get('nama_perusahaan', 'Sifabrik');
           @endphp
-          <a href="{{ route('admin.dashboard.index') }}" class="logo text-decoration-none d-flex align-items-center gap-2">
+          <a href="{{ $dashboardRoute }}" class="logo text-decoration-none d-flex align-items-center gap-2">
             @if($backendLogo && file_exists(public_path('storage/' . $backendLogo)))
               <img src="{{ asset('storage/' . $backendLogo) }}" alt="{{ $backendNama }}" style="height: 38px; max-width: 140px; object-fit: contain;">
             @else
@@ -293,6 +310,48 @@
         </li>
       @endif
 
+      <!-- PELANGGAN -->
+      @if(Auth::user()->role == 'pelanggan')
+        <li class="nav-item {{ request()->routeIs('pelanggan.dashboard') ? 'active' : '' }}">
+          <a href="{{ route('pelanggan.dashboard') }}">
+            <i class="fas fa-home"></i>
+            <p>Dashboard</p>
+          </a>
+        </li>
+
+        <li class="nav-section">
+          <h4 class="text-section">Pemesanan Saya</h4>
+        </li>
+        <li class="nav-item {{ request()->routeIs('pelanggan.order') ? 'active' : '' }}">
+          <a href="{{ route('pelanggan.order') }}">
+            <i class="fas fa-cart-plus"></i>
+            <p>Buat Pesanan Baru</p>
+          </a>
+        </li>
+        <li class="nav-item {{ request()->routeIs('pelanggan.riwayat*') || request()->routeIs('pelanggan.pesanan.*') ? 'active' : '' }}">
+          <a href="{{ route('pelanggan.riwayat') }}">
+            <i class="fas fa-history"></i>
+            <p>Riwayat Pesanan</p>
+          </a>
+        </li>
+
+        <li class="nav-section">
+          <h4 class="text-section">Katalog & Website</h4>
+        </li>
+        <li class="nav-item">
+          <a href="{{ url('/katalog') }}" target="_blank">
+            <i class="fas fa-boxes"></i>
+            <p>Katalog Gudang <i class="fas fa-external-link-alt ms-1 text-muted small"></i></p>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="{{ url('/') }}" target="_blank">
+            <i class="fas fa-globe"></i>
+            <p>Website Utama <i class="fas fa-external-link-alt ms-1 text-muted small"></i></p>
+          </a>
+        </li>
+      @endif
+
             <!-- LOGOUT -->
             <!-- <li class="nav-section">
               <h4 class="text-section">Akun</h4>
@@ -317,8 +376,12 @@
         <div class="main-header-logo">
           <!-- Logo Header -->
           <div class="logo-header" data-background-color="white">
-            <a href="{{ route('admin.dashboard.index') }}" class="logo text-decoration-none d-flex align-items-center gap-2">
-              <h4 class="toko m-0 text-primary fw-bold">🏭 Sifabrik</h4>
+            <a href="{{ $dashboardRoute }}" class="logo text-decoration-none d-flex align-items-center gap-2">
+              @if($backendLogo && file_exists(public_path('storage/' . $backendLogo)))
+                <img src="{{ asset('storage/' . $backendLogo) }}" alt="{{ $backendNama }}" style="height: 34px; max-width: 120px; object-fit: contain;">
+              @else
+                <h4 class="toko m-0 text-primary fw-bold">🏭 {{ $backendNama }}</h4>
+              @endif
             </a>
             <div class="nav-toggle">
               <button class="btn btn-toggle toggle-sidebar">
