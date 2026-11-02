@@ -128,8 +128,29 @@ routes/                   # Definisi routing
 Project ini menggunakan lisensi [MIT](LICENSE).
 
 ---
+<h1 align="center"> FrontEnd-SIFABRIC</h1>
 
 <img width="1920" height="4245" alt="Beranda - Sistem Informasi Gudang Fabrikasi" src="https://github.com/user-attachments/assets/57570765-c0a4-4ee7-b47a-53f3bb12e1eb" />
+
+<h1 align="center"> Login-SIFABRIC</h1>
+
+<img width="947" height="428" alt="Login - Sistem Informasi Gudang Fabrikasi" src="https://github.com/user-attachments/assets/0f47677b-b6cc-4dd6-b94d-54e69de07a86" />
+
+<h1 align="center"> Backend Admin-SIFABRIC</h1>
+
+<img width="1920" height="1697" alt="backend admin-Sistem Inventory" src="https://github.com/user-attachments/assets/17ff65bb-f943-47f3-8e3f-2526246902bb" />
+
+<h1 align="center"> Backend Pelanggan-SIFABRIC</h1>
+
+<img width="1920" height="879" alt="Pelanggan Sistem Inventory" src="https://github.com/user-attachments/assets/72b2bc5e-12f2-45f1-9953-72baf1f61544" />
+
+<h1 align="center"> Backend Kasir-SIFABRIC</h1>
+
+<img width="1920" height="1008" alt="Kasir - Sistem Inventory" src="https://github.com/user-attachments/assets/ad6e098a-e14e-45ac-8482-58ab59619315" />
+
+<h1 align="center"> Backend Pemilik-SIFABRIC</h1>
+
+<img width="1920" height="2058" alt="Pemilik - Sistem Inventory" src="https://github.com/user-attachments/assets/a4a13c0d-0050-442a-8fd7-d6f8ea1d97b1" />
 
 
 
