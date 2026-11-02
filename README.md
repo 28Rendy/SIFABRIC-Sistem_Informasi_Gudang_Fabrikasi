@@ -1,4 +1,7 @@
-<h1 align="center">🏭 SIFABRIC</h1>
+
+<img width="1408" height="768" alt="ZyG19JsDvmltMe6lzK5UtFenoPfcpfffHRh1vLnK" src="https://github.com/user-attachments/assets/8aa94452-00e9-4bbc-a532-c9f5faa9094e" />
+
+<h1 align="center"> SIFABRIC</h1>
 <p align="center"><strong>Sistem Informasi Gudang Fabrikasi</strong></p>
 
 <p align="center">
@@ -126,4 +129,10 @@ Project ini menggunakan lisensi [MIT](LICENSE).
 
 ---
 
-<p align="center">Made with ❤️ by <a href="https://github.com/rendy28">Rendy</a></p>
+<img width="1920" height="4245" alt="Beranda - Sistem Informasi Gudang Fabrikasi" src="https://github.com/user-attachments/assets/57570765-c0a4-4ee7-b47a-53f3bb12e1eb" />
+
+
+
+<p align="center">Made with OK by <a href="https://github.com/rendy28">Rendy</a></p>
+
+
