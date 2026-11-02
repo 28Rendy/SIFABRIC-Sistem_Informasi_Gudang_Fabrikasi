@@ -155,6 +155,34 @@
             <p>Laporan Penjualan</p>
             </a>
           </li>
+
+          <li class="nav-section">
+            <h4 class="text-section">Manajemen Frontend</h4>
+          </li>
+          <li class="nav-item">
+            <a href="{{ route('admin.pengaturan.index') }}">
+            <i class="fas fa-sliders-h"></i>
+            <p>Pengaturan Website</p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="{{ route('admin.galeri.index') }}">
+            <i class="fas fa-images"></i>
+            <p>Galeri Foto</p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="{{ route('admin.artikel.index') }}">
+            <i class="fas fa-newspaper"></i>
+            <p>Artikel & Berita</p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="{{ url('/') }}" target="_blank">
+            <i class="fas fa-external-link-alt"></i>
+            <p>Lihat Frontend <span class="badge badge-info ms-1">Publik</span></p>
+            </a>
+          </li>
       @endif
 
             <!-- KASIR -->

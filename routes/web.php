@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ArtikelAdminController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BarangController;
 use App\Http\Controllers\BarangMasukController;
@@ -8,6 +9,8 @@ use App\Http\Controllers\DashboardKasirController;
 use App\Http\Controllers\DashboardPimpinanController;
 use App\Http\Controllers\DataPenjualanController;
 use App\Http\Controllers\DetailPenjualanController;
+use App\Http\Controllers\FrontendController;
+use App\Http\Controllers\GaleriAdminController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\LapBarangAdminController;
@@ -16,6 +19,7 @@ use App\Http\Controllers\LaporanBarangMasukController;
 use App\Http\Controllers\LaporanController;
 use App\Http\Controllers\LaporanPenjualanController;
 use App\Http\Controllers\LapPenjualanAdminController;
+use App\Http\Controllers\PengaturanWebController;
 use App\Http\Controllers\PengeluaranController;
 use App\Http\Controllers\PenjualanController;
 use App\Http\Controllers\ProfilController;
@@ -25,12 +29,21 @@ use App\Http\Controllers\UserController;
 use GuzzleHttp\Middleware;
 use Illuminate\Support\Facades\Route;
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+// =============================================
+// FRONTEND PUBLIK (Guest)
+// =============================================
+Route::get('/', [FrontendController::class, 'home'])->name('frontend.home');
+Route::get('/katalog', [FrontendController::class, 'katalog'])->name('frontend.katalog');
+Route::get('/galeri', [FrontendController::class, 'galeri'])->name('frontend.galeri');
+Route::get('/artikel', [FrontendController::class, 'artikel'])->name('frontend.artikel');
+Route::get('/artikel/{slug}', [FrontendController::class, 'artikelDetail'])->name('frontend.artikel.detail');
+Route::get('/tentang-kami', [FrontendController::class, 'tentangKami'])->name('frontend.tentang');
+Route::get('/kontak', [FrontendController::class, 'kontak'])->name('frontend.kontak');
 
-// Route::get('/',[HomeController::class, 'index']);
-Route::get('/', [AuthController::class, 'index'])->name('login')->middleware('guest');
+// =============================================
+// AUTH
+// =============================================
+Route::get('/login', [AuthController::class, 'index'])->name('login')->middleware('guest');
 Route::post('/login', [AuthController::class, 'verify'])->name('auth.verify');
 
 Route::group(['middleware' => ['auth:admin,kasir,pimpinan']], function () {
@@ -101,6 +114,24 @@ Route::group(['middleware' => 'auth:admin'], function () {
     Route::get('/laporan-penjualan-admin', [LapPenjualanAdminController::class, 'index'])->name('laporan.penjualan.admin');
     Route::get('/laporan-penjualan-admin/pdf', [LapPenjualanAdminController::class, 'exportPdf'])->name('laporan.penjualan.admin.pdf');
     Route::get('/laporan-penjualan-admin/excel', [LapPenjualanAdminController::class, 'exportExcel'])->name('laporan.penjualan.admin.excel');
+
+    // Pengaturan Web & Frontend Konten (Admin)
+    Route::get('/admin/pengaturan-web', [PengaturanWebController::class, 'index'])->name('admin.pengaturan.index');
+    Route::post('/admin/pengaturan-web', [PengaturanWebController::class, 'update'])->name('admin.pengaturan.update');
+
+    // Kelola Galeri (Admin)
+    Route::get('/admin/galeri', [GaleriAdminController::class, 'index'])->name('admin.galeri.index');
+    Route::post('/admin/galeri', [GaleriAdminController::class, 'store'])->name('admin.galeri.store');
+    Route::put('/admin/galeri/{id}', [GaleriAdminController::class, 'update'])->name('admin.galeri.update');
+    Route::delete('/admin/galeri/{id}', [GaleriAdminController::class, 'destroy'])->name('admin.galeri.destroy');
+
+    // Kelola Artikel (Admin)
+    Route::get('/admin/artikel', [ArtikelAdminController::class, 'index'])->name('admin.artikel.index');
+    Route::get('/admin/artikel/create', [ArtikelAdminController::class, 'create'])->name('admin.artikel.create');
+    Route::post('/admin/artikel', [ArtikelAdminController::class, 'store'])->name('admin.artikel.store');
+    Route::get('/admin/artikel/{id}/edit', [ArtikelAdminController::class, 'edit'])->name('admin.artikel.edit');
+    Route::put('/admin/artikel/{id}', [ArtikelAdminController::class, 'update'])->name('admin.artikel.update');
+    Route::delete('/admin/artikel/{id}', [ArtikelAdminController::class, 'destroy'])->name('admin.artikel.destroy');
 
 });
 
