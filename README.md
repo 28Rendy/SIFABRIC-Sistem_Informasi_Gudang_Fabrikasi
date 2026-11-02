@@ -15,7 +15,7 @@
 
 Project ini dikembangkan sebagai personal portfolio dan akan terus dikembangkan menjadi platform yang dapat digunakan oleh berbagai pabrik (multi-tenant).
 
-> **Atribusi:** Project ini dikembangkan dan diperluas dari base project oleh [Dewi Fatimah Azzahra](https://github.com/28Rendy/SIFABRIC-Sistem_Informasi_Gudang_Fabrikasi) sebagai Tugas Akhir. Pengembangan lanjutan oleh [Rendy](https://github.com/rendy28).
+> **Atribusi:** Project ini merupakan pengembangan lanjutan dari [SIFABRIC oleh Dewi Fatimah Azzahra](https://github.com/28Rendy/SIFABRIC-Sistem_Informasi_Gudang_Fabrikasi) yang dimodifikasi dan dikembangkan untuk tujuan portfolio pribadi oleh [Rendy](https://github.com/rendy28).
 
 ---
 
