@@ -60,6 +60,24 @@
       background: #f1f5f9;
       border-radius: 8px;
     }
+
+    /* Ukuran proporsional ikon SVG pagination */
+    nav svg,
+    nav svg.w-5,
+    nav svg.w-4,
+    svg.w-5,
+    svg.w-4 {
+      width: 1.25rem !important;
+      height: 1.25rem !important;
+      max-width: 20px !important;
+      max-height: 20px !important;
+      display: inline-block !important;
+      vertical-align: middle !important;
+    }
+    .w-5 { width: 1.25rem !important; }
+    .h-5 { height: 1.25rem !important; }
+    .w-4 { width: 1rem !important; }
+    .h-4 { height: 1rem !important; }
   </style>
 
 </head>
