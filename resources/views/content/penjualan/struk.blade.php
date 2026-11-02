@@ -18,7 +18,7 @@
 </head>
 <body>
     <div class="text-center">
-        <strong>MANDALA BANGUNAN</strong><br>
+        <strong>Sifabrik</strong><br>
         Jl. Simpang Lambau Nagari Tigo Jangko<br>
         ================================
     </div>

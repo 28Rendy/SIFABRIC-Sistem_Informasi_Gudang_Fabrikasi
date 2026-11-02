@@ -51,7 +51,7 @@
         <!-- Logo Header -->
         <div class="logo-header" data-background-color="dark">
           <a href="index.html" class="logo text-decoration-none d-flex align-items-center gap-2">
-            <h4 class="toko m-0 text-white fw-bold">Mandala Bangunan</h4>
+            <h4 class="toko m-0 text-white fw-bold">Sifabrik</h4>
           </a>
           <div class="nav-toggle">
             <button class="btn btn-toggle toggle-sidebar">
@@ -320,12 +320,11 @@
       <footer class="footer">
         <div class="container-fluid d-flex justify-content-between">
           <div class="copyright">
-            2025, made with <i class="fa fa-heart heart text-danger"></i> by
-            <a href="#">Dewi Fatimah Azzahra</a>
+            {{ date('Y') }}, made with <i class="fa fa-heart heart text-danger"></i> by
+            <a href="https://github.com/rendy28" target="_blank">Rendy</a>
           </div>
           <div>
-            Distributed by
-            <a target="_blank" href="#">TugasAkhir</a>.
+            <a target="_blank" href="https://github.com/rendy28/Sifabrik">SIFABRIC - Sistem Informasi Gudang Fabrikasi</a>
           </div>
         </div>
       </footer>

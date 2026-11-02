@@ -1,6 +1,6 @@
 <div style="font-family: monospace; font-size: 12px; max-width: 250px; margin: auto;">
     <div style="text-align: center;">
-        <h5 style="margin: 0;">TOKO MANDALA</h5>
+        <h5 style="margin: 0;">TOKO Sifabrik</h5>
         <small>Jl. Simpang Lambau Nagari Tigo jangko</small><br>
         <small>Telp: 0812-3456-7890</small>
     </div>

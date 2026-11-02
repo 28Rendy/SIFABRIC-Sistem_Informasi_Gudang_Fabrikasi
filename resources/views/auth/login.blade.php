@@ -107,7 +107,7 @@
 
     <div class="container login-container d-flex align-items-center justify-content-center">
         <div class="login-box">
-            <h4>Mandala Bangunan</h4>
+            <h4>Sifabrik</h4>
             <form method="POST" action="{{ route('auth.verify') }}">
                 @csrf
                 <div class="mb-3">

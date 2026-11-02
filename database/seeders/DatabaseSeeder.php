@@ -3,8 +3,8 @@
 namespace Database\Seeders;
 
 use App\Models\User;
-// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
 
 class DatabaseSeeder extends Seeder
 {
@@ -13,25 +13,31 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(10)->create();
+        // Akun default untuk development
+        User::create([
+            'name'     => 'Administrator',
+            'email'    => 'admin@sifabric.test',
+            'role'     => 'admin',
+            'password' => Hash::make('password'),
+        ]);
+        User::create([
+            'name'     => 'Kasir',
+            'email'    => 'kasir@sifabric.test',
+            'role'     => 'kasir',
+            'password' => Hash::make('password'),
+        ]);
+        User::create([
+            'name'     => 'Pimpinan',
+            'email'    => 'pimpinan@sifabric.test',
+            'role'     => 'pimpinan',
+            'password' => Hash::make('password'),
+        ]);
 
-        User::create([
-            'name' => 'admin',
-            'email' => 'admin@gmail.com',
-            'role' => 'admin',
-            'password' => 'admin',
-        ]);
-        User::create([
-            'name' => 'kasir',
-            'email' => 'kasir@gmail.com',
-            'role' => 'kasir',
-            'password' => 'kasir',
-        ]);
-        User::create([
-            'name' => 'pimpinan',
-            'email' => 'pimpinan@gmail.com',
-            'role' => 'pimpinan',
-            'password' => 'pimpinan',
+        // Data dummy generik
+        $this->call([
+            KategoriSeeder::class,
+            SupplierSeeder::class,
+            BarangSeeder::class,
         ]);
     }
 }

@@ -47,10 +47,10 @@
 </head>
 <body>
     <div class="header">
-        <h2>Toko Bangunan Mandala</h2>
+        <h2>Toko Bangunan Sifabrik</h2>
         <p>Alamat: Simpang Lambau, Jorong Rajawali</p>
         <p>No. Telepon: 0812-xxxx-xxxx</p>
-        <p>Email: tokobangunanmandala@example.com</p>
+        <p>Email: tokobangunanSifabrik@example.com</p>
     </div>
 
     <hr>

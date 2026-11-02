@@ -33,7 +33,7 @@ class DashboardAdminController extends Controller
 
         // Data Grafik Penjualan Bulanan (berdasarkan kolom 'tanggal')
         $currentYear = date('Y');
-        $penjualanPerBulan = Penjualan::selectRaw('MONTH(tanggal) as bulan, SUM(total) as total_penjualan')
+        $penjualanPerBulan = Penjualan::selectRaw("strftime('%m', tanggal) as bulan, SUM(total) as total_penjualan")
             ->whereYear('tanggal', $currentYear)
             ->groupBy('bulan')
             ->orderBy('bulan')
@@ -42,7 +42,7 @@ class DashboardAdminController extends Controller
         // Siapkan array 12 bulan default 0
         $dataGrafik = array_fill(1, 12, 0);
         foreach ($penjualanPerBulan as $row) {
-            $dataGrafik[(int)$row->bulan] = $row->total_penjualan;
+            $dataGrafik[(int)$row->bulan] = (float)$row->total_penjualan;
         }
 
         // ✅ Tambahan: Barang Terlaris (Top 5)

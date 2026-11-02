@@ -23,10 +23,10 @@
 <body>
 
     <div class="header">
-        <strong style="font-size: 16px;">Toko Bangunan Mandala</strong><br>
+        <strong style="font-size: 16px;">Toko Bangunan Sifabrik</strong><br>
         Alamat: Simpang Lambau, Jorong Rajawali<br>
         No. Telepon: 0821-xxxx-xxxx<br>
-        Email: tokobangunanmandala@email.com
+        Email: tokobangunanSifabrik@email.com
     </div>
 <hr>
     <h4 style="text-align: center; margin-top: 20px;">Laporan Penjualan Tahun {{ $tahun }}{{ $bulan ? ' - Bulan ' . \Carbon\Carbon::create()->month($bulan)->translatedFormat('F') : '' }}</h4>
