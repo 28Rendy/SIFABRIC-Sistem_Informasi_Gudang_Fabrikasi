@@ -38,6 +38,7 @@ class DatabaseSeeder extends Seeder
             SupplierSeeder::class,
             BarangSeeder::class,
             SiteSettingSeeder::class,
+            ContentDummySeeder::class,
         ]);
     }
 }
