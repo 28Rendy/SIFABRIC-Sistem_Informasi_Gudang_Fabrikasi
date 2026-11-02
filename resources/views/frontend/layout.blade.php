@@ -48,12 +48,11 @@
 <nav class="navbar navbar-expand-lg sticky-top">
     <div class="container">
         <a class="navbar-brand" href="{{ url('/') }}">
-            @if($site['logo'])
-                <img src="{{ asset('storage/' . $site['logo']) }}" height="36" alt="{{ $site['nama'] }}" class="me-2">
+            @if($site['logo'] && file_exists(public_path('storage/' . $site['logo'])))
+                <img src="{{ asset('storage/' . $site['logo']) }}" height="36" alt="{{ $site['nama'] }}" style="object-fit:contain;">
             @else
-                🏭
+                🏭 {{ $site['nama'] }}
             @endif
-            {{ $site['nama'] }}
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
             <span class="navbar-toggler-icon"></span>
@@ -93,7 +92,14 @@
     <div class="container">
         <div class="row g-4">
             <div class="col-lg-4">
-                <div class="footer-brand mb-2">🏭 {{ $site['nama'] }}</div>
+                <div class="footer-brand mb-2">
+                    @if($site['logo'] && file_exists(public_path('storage/' . $site['logo'])))
+                        <img src="{{ asset('storage/' . $site['logo']) }}" height="36" alt="{{ $site['nama'] }}" style="object-fit:contain; max-width:120px;" class="mb-1 d-block">
+                    @else
+                        🏭
+                    @endif
+                    {{ $site['nama'] }}
+                </div>
                 <p style="font-size:.9rem;">{{ $site['tagline'] }}</p>
                 <div class="d-flex gap-3 mt-3">
                     @if($site['instagram'])<a href="{{ $site['instagram'] }}" target="_blank"><i class="fab fa-instagram fa-lg"></i></a>@endif

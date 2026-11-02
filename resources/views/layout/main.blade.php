@@ -71,8 +71,16 @@
       <div class="sidebar-logo">
         <!-- Logo Header -->
         <div class="logo-header" data-background-color="white">
+          @php
+            $backendLogo = \App\Models\SiteSetting::get('logo');
+            $backendNama = \App\Models\SiteSetting::get('nama_perusahaan', 'Sifabrik');
+          @endphp
           <a href="{{ route('admin.dashboard.index') }}" class="logo text-decoration-none d-flex align-items-center gap-2">
-            <h4 class="toko m-0 text-primary fw-bold">🏭 Sifabrik</h4>
+            @if($backendLogo && file_exists(public_path('storage/' . $backendLogo)))
+              <img src="{{ asset('storage/' . $backendLogo) }}" alt="{{ $backendNama }}" style="height: 38px; max-width: 140px; object-fit: contain;">
+            @else
+              <h4 class="toko m-0 text-primary fw-bold">🏭 {{ $backendNama }}</h4>
+            @endif
           </a>
           <div class="nav-toggle">
             <button class="btn btn-toggle toggle-sidebar">
