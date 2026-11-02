@@ -460,6 +460,32 @@
     </script>
 @endif
 
+  <script>
+    // Pertahankan posisi scroll sidebar saat klik menu / pindah halaman
+    document.addEventListener("DOMContentLoaded", function () {
+      var sidebarWrapper = document.querySelector('.sidebar-wrapper');
+      if (sidebarWrapper) {
+        // Ambil elemen menu aktif
+        var activeItem = sidebarWrapper.querySelector('.nav-item.active');
+        if (activeItem) {
+          // Scroll halus otomatis ke elemen menu yang aktif
+          activeItem.scrollIntoView({ block: 'center', behavior: 'instant' });
+        } else {
+          // Jika tidak ada item aktif, pulihkan scroll sebelumnya dari sessionStorage
+          var savedScroll = sessionStorage.getItem('sidebar_scroll_pos');
+          if (savedScroll !== null) {
+            sidebarWrapper.scrollTop = parseInt(savedScroll, 10);
+          }
+        }
+
+        // Simpan posisi scroll setiap kali pengguna menggulir sidebar
+        sidebarWrapper.addEventListener('scroll', function () {
+          sessionStorage.setItem('sidebar_scroll_pos', sidebarWrapper.scrollTop);
+        });
+      }
+    });
+  </script>
+
   @yield('scripts')
 </body>
 
