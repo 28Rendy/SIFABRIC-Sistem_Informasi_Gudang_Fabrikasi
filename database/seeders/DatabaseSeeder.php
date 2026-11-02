@@ -31,6 +31,12 @@ class DatabaseSeeder extends Seeder
             'role'     => 'pimpinan',
             'password' => Hash::make('password'),
         ]);
+        User::create([
+            'name'     => 'Pelanggan Demo',
+            'email'    => 'pelanggan@sifabric.test',
+            'role'     => 'pelanggan',
+            'password' => Hash::make('password'),
+        ]);
 
         // Data dummy generik
         $this->call([
