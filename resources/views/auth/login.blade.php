@@ -117,8 +117,13 @@
                 </div>
 
                 <div class="mb-3">
-                    <label for="password" class="form-label">Kata Sandi</label>
-                    <input type="password" name="password" id="password" class="form-control" placeholder="******"
+                    <div class="d-flex justify-content-between align-items-center">
+                        <label for="password" class="form-label mb-0">Kata Sandi</label>
+                        <a href="javascript:void(0)" onclick="infoLupaPassword()" class="small text-muted text-decoration-none" style="font-size: 0.78rem;">
+                            Lupa kata sandi?
+                        </a>
+                    </div>
+                    <input type="password" name="password" id="password" class="form-control mt-1" placeholder="******"
                         required>
                 </div>
 
@@ -195,6 +200,25 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <!-- SweetAlert2 -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        function infoLupaPassword() {
+            Swal.fire({
+                icon: 'info',
+                title: 'Informasi Reset Kata Sandi',
+                html: `
+                    <div class="text-start small">
+                        <p class="mb-2"><strong>👤 Pelanggan / Mitra Luar:</strong><br>
+                        Silakan hubungi admin atau customer service kami melalui kontak WhatsApp yang tertera di website untuk verifikasi reset sandi.</p>
+                        <hr class="my-2">
+                        <p class="mb-0 text-muted"><strong>🛡️ Administrator / Kasir / Pimpinan:</strong><br>
+                        Akses sistem internal dikelola langsung oleh tim teknis. Reset kata sandi staf dan dev dapat dilakukan langsung melalui database seeder atau command console.</p>
+                    </div>
+                `,
+                confirmButtonText: 'Saya Mengerti',
+                confirmButtonColor: '#1d4ed8'
+            });
+        }
+    </script>
     @if (session('error'))
     <script>
         Swal.fire({
