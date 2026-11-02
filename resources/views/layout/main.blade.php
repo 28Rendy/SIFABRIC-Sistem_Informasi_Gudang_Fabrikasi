@@ -40,6 +40,27 @@
   <!-- SweetAlert2 CDN -->
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
+  <style>
+    /* Styling menu aktif sidebar */
+    .sidebar .nav > .nav-item.active > a {
+      background: #1a56db !important;
+      color: #ffffff !important;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(26, 86, 219, 0.3) !important;
+    }
+    .sidebar .nav > .nav-item.active > a i,
+    .sidebar .nav > .nav-item.active > a p {
+      color: #ffffff !important;
+      font-weight: 600;
+    }
+    .sidebar .nav > .nav-item > a {
+      transition: all 0.2s ease-in-out;
+    }
+    .sidebar .nav > .nav-item > a:hover {
+      background: #f1f5f9;
+      border-radius: 8px;
+    }
+  </style>
 
 </head>
 
@@ -79,7 +100,7 @@
 
             <!-- ADMIN -->
             @if(Auth::user()->role == 'admin')
-          <li class="nav-item">
+          <li class="nav-item {{ request()->routeIs('admin.dashboard.*') ? 'active' : '' }}">
             <a href="{{route('admin.dashboard.index')}}">
             <i class="fas fa-home"></i>
             <p>Dashboard</p>
@@ -88,25 +109,25 @@
           <li class="nav-section">
             <h4 class="text-section">Data Master</h4>
           </li>
-          <li class="nav-item">
+          <li class="nav-item {{ request()->routeIs('admin.user.*') ? 'active' : '' }}">
             <a href="{{route('admin.user.index')}}">
             <i class="fas fa-users-cog"></i>
             <p>Data User</p>
             </a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item {{ request()->routeIs('admin.barang.*') ? 'active' : '' }}">
             <a href="{{route('admin.barang.index')}}">
             <i class="fas fa-boxes"></i>
             <p>Data Barang</p>
             </a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item {{ request()->routeIs('admin.kategori.*') ? 'active' : '' }}">
             <a href="{{ route('admin.kategori.index') }}">
             <i class="fas fa-th-large"></i>
             <p>Data Kategori</p>
             </a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item {{ request()->routeIs('admin.supplier.*') ? 'active' : '' }}">
             <a href="{{ route('admin.supplier.index') }}">
             <i class="fas fa-truck"></i>
             <p>Data Suplier</p>
@@ -115,19 +136,19 @@
           <li class="nav-section">
             <h4 class="text-section">Transaksi</h4>
           </li>
-          <li class="nav-item">
+          <li class="nav-item {{ request()->routeIs('admin.barang-masuk.*') ? 'active' : '' }}">
             <a href="{{route('admin.barang-masuk.index')}}">
             <i class="fas fa-cart-plus"></i>
             <p>Barang Masuk</p>
             </a>
           </li>
-           <li class="nav-item">
+           <li class="nav-item {{ request()->routeIs('Datapenjualan.*') ? 'active' : '' }}">
             <a href="{{ route('Datapenjualan.index') }}">
             <i class="fas fa-truck"></i>
             <p>Riwayat Penjualan</p>
             </a>
           </li>
-          <!-- <li class="nav-item">
+          <!-- <li class="nav-item {{ request()->routeIs('admin.pengeluaran.*') ? 'active' : '' }}">
           <a href="{{ route('admin.pengeluaran.index') }}">
           <i class="fas fa-money-bill-wave"></i>
           <p>Data Pengeluaran</p>
@@ -137,19 +158,19 @@
           <li class="nav-section">
             <h4 class="text-section">Laporan</h4>
           </li>
-          <li class="nav-item">
+          <li class="nav-item {{ request()->routeIs('laporan.barang*') ? 'active' : '' }}">
             <a href="{{route('laporan.barang')}}">
             <i class="fas fa-clipboard-list"></i>
             <p>Laporan Stok Barang</p>
             </a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item {{ request()->routeIs('laporan.masuk*') ? 'active' : '' }}">
             <a href="{{route('laporan.masuk')}}">
             <i class="fas fa-dolly-flatbed"></i>
             <p>Laporan Barang Masuk</p>
             </a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item {{ request()->routeIs('laporan.penjualan.admin*') ? 'active' : '' }}">
             <a href="{{route('laporan.penjualan.admin')}}">
             <i class="fas fa-chart-bar"></i>
             <p>Laporan Penjualan</p>
@@ -159,19 +180,19 @@
           <li class="nav-section">
             <h4 class="text-section">Manajemen Frontend</h4>
           </li>
-          <li class="nav-item">
+          <li class="nav-item {{ request()->routeIs('admin.pengaturan.*') ? 'active' : '' }}">
             <a href="{{ route('admin.pengaturan.index') }}">
             <i class="fas fa-sliders-h"></i>
             <p>Pengaturan Website</p>
             </a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item {{ request()->routeIs('admin.galeri.*') ? 'active' : '' }}">
             <a href="{{ route('admin.galeri.index') }}">
             <i class="fas fa-images"></i>
             <p>Galeri Foto</p>
             </a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item {{ request()->routeIs('admin.artikel.*') ? 'active' : '' }}">
             <a href="{{ route('admin.artikel.index') }}">
             <i class="fas fa-newspaper"></i>
             <p>Artikel & Berita</p>
@@ -187,7 +208,7 @@
 
             <!-- KASIR -->
             @if(Auth::user()->role == 'kasir')
-        <li class="nav-item">
+        <li class="nav-item {{ request()->routeIs('kasir.dashboard.*') ? 'active' : '' }}">
           <a href="{{route('kasir.dashboard.index')}}">
           <i class="fas fa-home"></i>
           <p>Dashboard</p>
@@ -196,13 +217,13 @@
         <li class="nav-section">
           <h4 class="text-section">Menu Kasir</h4>
         </li>
-        <li class="nav-item">
+        <li class="nav-item {{ request()->routeIs('penjualan.*') ? 'active' : '' }}">
           <a href="{{route('penjualan.index')}}">
           <i class="fas fa-exchange-alt"></i>
           <p>Penjualan</p>
           </a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item {{ request()->routeIs('Riwayatpenjualan.*') ? 'active' : '' }}">
           <a href="{{ route('Riwayatpenjualan.index') }}">
           <i class="fas fa-exchange-alt"></i>
           <p>Riwayat Penjualan</p>
@@ -211,7 +232,7 @@
       @endif
             <!-- PIMPINAN -->
             @if(Auth::user()->role == 'pimpinan')
-        <li class="nav-item">
+        <li class="nav-item {{ request()->routeIs('pimpinan.dashboard.*') ? 'active' : '' }}">
           <a href="{{route('pimpinan.dashboard.index')}}">
           <i class="fas fa-home"></i>
           <p>Dashboard</p>
@@ -220,19 +241,19 @@
         <li class="nav-section">
           <h4 class="text-section">Laporan Pimpinan</h4>
         </li>
-        <li class="nav-item">
+        <li class="nav-item {{ request()->routeIs('laporan.stok*') ? 'active' : '' }}">
           <a href="{{ route('laporan.stok') }}">
           <i class="fas fa-clipboard-list"></i>
           <p>Laporan Stok Barang</p>
           </a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item {{ request()->routeIs('laporan.barang-masuk*') ? 'active' : '' }}">
           <a href="{{route('laporan.barang-masuk')}}">
           <i class="fas fa-dolly-flatbed"></i>
           <p>Laporan Barang Masuk</p>
           </a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item {{ request()->routeIs('laporan.penjualan*') && !request()->routeIs('laporan.penjualan.admin*') ? 'active' : '' }}">
           <a href="{{route("laporan.penjualan")}}">
           <i class="fas fa-chart-bar"></i>
           <p>Laporan Penjualan</p>
