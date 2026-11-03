@@ -12,6 +12,13 @@
 
 ---
 
+> ### 🛡️ Pernyataan Data Dummy & Penafian Orisinalitas (Disclaimer)
+> Seluruh konten dan data di dalam repositori ini termasuk namun tidak terbatas pada **nama usaha/entitas (*SIFABRIC / Sistem Informasi Gudang Fabrikasi*)**, nama produk, nama pelanggan/pengguna, data transaksi, harga, alamat galeri, nomor telepon, testimoni, hingga foto katalog batik merupakan **100% data tiruan (pure dummy data)** yang dibuat khusus untuk keperluan demonstrasi fungsional, bahan pembelajaran, dan portofolio pengembangan perangkat lunak sumber terbuka (*open-source*).
+> 
+> Segala bentuk kesamaan nama merek, tokoh, alamat, atau produk di dunia nyata adalah **murni ketidaksengajaan** tanpa ada niat plagiarisme, pencemaran nama baik, maupun pelanggaran hak cipta. Proyek ini tidak memuat dan tidak menyebarkan data pribadi (*privacy*) milik pihak manapun.
+
+---
+
 ## 📖 Tentang Project
 
 **SIFABRIC** adalah sistem informasi manajemen gudang berbasis web yang dirancang untuk membantu pabrik dalam mengelola stok barang, transaksi penjualan, barang masuk, supplier, dan laporan keuangan secara terintegrasi.
